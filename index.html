@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: 'Helvetica neue', sans-serif;
+            font-size: 16px;
+        }
+
+        fieldset {
+            max-width: 30%;
+            margin: 5em auto;
+            padding: 2em;
+            border: 3px groove #ececec;
+            border-radius: 4px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 15em;
+            display: block;
+            border: 1px solid #999;
+            border-radius: 4px;
+        }
+
+        button {
+            display: block;
+            margin: 1em 0 0;
+            border: 1px solid dark;
+            padding: 0.75em;
+            line-height: 1;
+            border-radius: 2px;
+            font-size: 16px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form method="POST" id="Credentials">
+        <fieldset>
+            <legend>Enter Credentials</legend>
+            <label for="username">Username: </label>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="password">Password: </label>
+            <input type="text" id="password" name="password"><br><br>
+            <button id="btnSave">Save</button>
+        </fieldset>
+    </form>
+</body>
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+    let form =  $("#Credentials")
+    form.on("submit", function() {
+        $.ajax({
+            url: "/",
+            type: "POST",
+            cache: false,
+            data: form.serialize(),
+            success: function (data) {
+                alert("Success");
+            },
+            error: function(data) {
+                alert("Error");
+            }
+        });
+    })
+
+</script>
+
+</html>
